@@ -1,46 +1,153 @@
-<!DOCTYPE html>
+
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rajugari Ruchulu - Indian Cuisine</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Rajugari Ruchulu — Authentic Indian Cuisine</title>
+  <meta name="description" content="Rajugari Ruchulu — Royal Indian flavors. Order online." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header>
-    <h1>Rajugari Ruchulu</h1>
-    <p>Authentic Indian Cuisine</p>
-  </header>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">
+          <img src="assets/img/logo.svg" alt="Rajugari Ruchulu logo">
+        </div>
+        <div class="title">
+          <h1>Rajugari Ruchulu</h1>
+          <div class="subtitle">Royal Indian Home‑Cooked Flavors</div>
+        </div>
+      </div>
+      <nav>
+        <a class="nav-link" href="#menu">Menu</a>
+        <a class="nav-link" href="#gallery">Gallery</a>
+        <a class="nav-link" href="#about">About</a>
+        <a class="nav-link" href="#contact">Contact</a>
+        <button class="btn" id="open-order">Order</button>
+      </nav>
+    </header>
 
-  <nav>
-    <a href="#menu">Menu</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
-  </nav>
+    <section class="hero">
+      <div class="hero-card">
+        <span class="eyebrow">Since 2025</span>
+        <h2>Taste the King's Table — Authentic Indian Cuisine</h2>
+        <p class="lead">From fragrant biryanis to buttery curries and fresh tandoori breads — prepared daily with love and spices.</p>
+        <div style="display:flex;gap:10px;margin-top:10px">
+          <button class="btn" id="view-menu">Explore Menu</button>
+          <a class="nav-link" href="#contact" style="align-self:center">Find us</a>
+        </div>
+        <div style="margin-top:16px;display:flex;gap:10px">
+          <div class="card" style="flex:1"><strong>Fresh</strong><div class="muted">Local ingredients</div></div>
+          <div class="card" style="flex:1"><strong>Traditional</strong><div class="muted">Family recipes</div></div>
+          <div class="card" style="flex:1"><strong>Fast</strong><div class="muted">Pickup & delivery</div></div>
+        </div>
+      </div>
+      <aside class="hero-side">
+        <img src="assets/img/hero-food.svg" alt="Royal Indian feast">
+        <div class="stats">
+          <div><strong>Open</strong><div class="muted">11:00 — 22:00</div></div>
+          <div style="text-align:right"><strong>Delivery</strong><div class="muted">Available</div></div>
+        </div>
+      </aside>
+    </section>
 
-  <section id="menu">
-    <h2>Our Menu</h2>
-    <ul>
-      <li>Biryani</li>
-      <li>Chicken Curry</li>
-      <li>Veg Meals</li>
-      <li>Dosa</li>
-    </ul>
-  </section>
+    <main class="two-col">
+      <div>
+        <section id="menu" class="card">
+          <h3 style="margin-top:0">Menu</h3>
+          <p class="muted">Tap <strong>ADD</strong> to build your order. Edit prices & dishes in <code>script.js</code>.</p>
+          <div id="menuGrid" class="menu-grid" aria-live="polite"></div>
+        </section>
 
-  <section id="about">
-    <h2>About Us</h2>
-    <p>Welcome to Rajugari Ruchulu, where we bring the traditional flavors of India to your plate.</p>
-  </section>
+        <section id="gallery" class="card" style="margin-top:14px">
+          <h3 style="margin-top:0">Gallery</h3>
+          <div class="gallery">
+            <img src="assets/img/gallery1.svg" alt="Signature biryani">
+            <img src="assets/img/gallery2.svg" alt="Tandoori & kebabs">
+            <img src="assets/img/gallery3.svg" alt="Breads & sweets">
+          </div>
+        </section>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Email: info@rajugari-ruchulu.com</p>
-    <p>Phone: +1 (000) 123-4567</p>
-  </section>
+        <section id="about" class="card" style="margin-top:14px">
+          <h3 style="margin-top:0">About Rajugari Ruchulu</h3>
+          <p class="muted">We celebrate Indian royal kitchens with homestyle warmth. Aromatic spices, balanced flavors and generous portions — made to order.</p>
+          <ul class="muted">
+            <li>Veg & non‑veg options</li>
+            <li>Allergy‑friendly on request</li>
+          </ul>
+        </section>
 
-  <footer>
-    <p>© 2025 Rajugari Ruchulu</p>
-  </footer>
+        <section id="contact" class="card" style="margin-top:14px">
+          <h3 style="margin-top:0">Contact & Hours</h3>
+          <p class="muted">
+            Phone: <strong>(555) 123‑4567</strong><br>
+            Email: <strong>orders@rajugariruchulu.example</strong>
+          </p>
+          <p class="muted">Mon–Sun: 11:00 AM — 10:00 PM</p>
+          <div style="margin-top:8px">
+            <a class="nav-link" href="tel:+15551234567">Call</a>
+            <a class="nav-link" href="#menu" style="margin-left:8px">Order Online</a>
+          </div>
+        </section>
+      </div>
+
+      <aside>
+        <div class="cart" id="cart">
+          <h3>Your Order</h3>
+          <div id="cartList" style="max-height:260px;overflow:auto;margin-bottom:8px">
+            <div class="muted">No items yet — add dishes from the menu.</div>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div class="muted">Subtotal</div>
+            <div id="subtotal" style="font-weight:800">$0.00</div>
+          </div>
+          <div style="margin-top:12px;display:flex;gap:8px">
+            <button class="btn" id="openCheckout">Checkout</button>
+            <a class="nav-link" id="clearCart" href="javascript:void(0)">Clear</a>
+          </div>
+        </div>
+
+        <div id="checkoutPanel" class="card" style="margin-top:12px;display:none">
+          <h3 style="margin-top:0">Checkout</h3>
+          <form id="checkoutForm">
+            <label for="customerName">Full name</label>
+            <input id="customerName" required placeholder="Your name">
+            <label for="customerPhone">Phone</label>
+            <input id="customerPhone" required placeholder="Phone number">
+            <label for="orderMethod">Order type</label>
+            <select id="orderMethod">
+              <option>Pickup</option>
+              <option>Delivery</option>
+            </select>
+            <label for="customerAddress">Address (if Delivery)</label>
+            <textarea id="customerAddress" placeholder="Street, City, Zip"></textarea>
+            <label for="customerNotes">Special requests</label>
+            <textarea id="customerNotes" placeholder="E.g. extra spicy, no onion"></textarea>
+            <div style="display:flex;gap:8px;margin-top:8px">
+              <button type="button" class="btn" id="placeOrder">Place Order</button>
+              <a class="nav-link" id="cancelCheckout" href="javascript:void(0)">Cancel</a>
+            </div>
+            <p class="muted" style="margin-top:8px;font-size:13px">
+              Add a Formspree endpoint in <code>script.js</code> to receive orders via POST, or leave blank to send by email automatically.
+            </p>
+          </form>
+        </div>
+
+        <div class="card" style="margin-top:12px">
+          <h4 style="margin:0 0 8px 0">Find us</h4>
+          <iframe style="width:100%;height:200px;border:0;border-radius:10px" loading="lazy"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.019!2d-122.4194!3d37.7749">
+          </iframe>
+        </div>
+      </aside>
+    </main>
+
+    <footer>© <span id="year"></span> Rajugari Ruchulu — Made with ❤️</footer>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
