@@ -4,22 +4,23 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Rajugari Ruchulu — Authentic Indian Cuisine</title>
-  <meta name="description" content="Rajugari Ruchulu — Royal Indian flavors. Order online." />
+  <title>Rajugari Ruchulu — Authentic Indian Cuisine (UK)</title>
+  <meta name="description" content="Rajugari Ruchulu — Royal Indian flavours in the United Kingdom. Order online." />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="assets/img/logo-header-128.png" sizes="128x128"/>
 </head>
 <body>
   <div class="container">
     <header>
       <div class="brand">
         <div class="logo">
-          <img src="assets/img/logo.svg" alt="Rajugari Ruchulu logo">
+          <img src="assets/img/logo-header-256.png" alt="Rajugari Ruchulu logo">
         </div>
         <div class="title">
           <h1>Rajugari Ruchulu</h1>
-          <div class="subtitle">Royal Indian Home‑Cooked Flavors</div>
+          <div class="subtitle">Royal Indian Home-Cooked Flavours • United Kingdom</div>
         </div>
       </div>
       <nav>
@@ -47,7 +48,7 @@
         </div>
       </div>
       <aside class="hero-side">
-        <img src="assets/img/hero-food.svg" alt="Royal Indian feast">
+        <img src="assets/img/hero.jpg" alt="Royal Indian feast">
         <div class="stats">
           <div><strong>Open</strong><div class="muted">11:00 — 22:00</div></div>
           <div style="text-align:right"><strong>Delivery</strong><div class="muted">Available</div></div>
@@ -58,38 +59,39 @@
     <main class="two-col">
       <div>
         <section id="menu" class="card">
-          <h3 style="margin-top:0">Menu</h3>
-          <p class="muted">Tap <strong>ADD</strong> to build your order. Edit prices & dishes in <code>script.js</code>.</p>
+          <h3 style="margin-top:0">Menu (GBP)</h3>
+          <p class="muted">Tap <strong>ADD</strong> to build your order. Prices in <strong>£</strong>. Edit dishes in <code>script.js</code>.</p>
           <div id="menuGrid" class="menu-grid" aria-live="polite"></div>
         </section>
 
         <section id="gallery" class="card" style="margin-top:14px">
           <h3 style="margin-top:0">Gallery</h3>
           <div class="gallery">
-            <img src="assets/img/gallery1.svg" alt="Signature biryani">
-            <img src="assets/img/gallery2.svg" alt="Tandoori & kebabs">
-            <img src="assets/img/gallery3.svg" alt="Breads & sweets">
+            <img src="assets/img/gallery1.jpg" alt="Signature biryani">
+            <img src="assets/img/gallery2.jpg" alt="Tandoori & kebabs">
+            <img src="assets/img/gallery3.jpg" alt="Breads & sweets">
           </div>
         </section>
 
         <section id="about" class="card" style="margin-top:14px">
           <h3 style="margin-top:0">About Rajugari Ruchulu</h3>
-          <p class="muted">We celebrate Indian royal kitchens with homestyle warmth. Aromatic spices, balanced flavors and generous portions — made to order.</p>
+          <p class="muted">We celebrate Indian royal kitchens with homestyle warmth. Aromatic spices, balanced flavours and generous portions — made to order.</p>
           <ul class="muted">
-            <li>Veg & non‑veg options</li>
-            <li>Allergy‑friendly on request</li>
+            <li>Veg & non-veg options</li>
+            <li>Allergy-friendly on request</li>
           </ul>
         </section>
 
         <section id="contact" class="card" style="margin-top:14px">
-          <h3 style="margin-top:0">Contact & Hours</h3>
+          <h3 style="margin-top:0">Contact & Hours (UK)</h3>
           <p class="muted">
-            Phone: <strong>(555) 123‑4567</strong><br>
-            Email: <strong>orders@rajugariruchulu.example</strong>
+            Phone: <strong>+44 20 7946 0123</strong><br>
+            Email: <strong>orders@rajugariruchulu.example</strong><br>
+            Address: <strong>123 High Street, London, UK</strong>
           </p>
-          <p class="muted">Mon–Sun: 11:00 AM — 10:00 PM</p>
+          <p class="muted">Mon–Sun: 11:00 — 22:00</p>
           <div style="margin-top:8px">
-            <a class="nav-link" href="tel:+15551234567">Call</a>
+            <a class="nav-link" href="tel:+442079460123">Call</a>
             <a class="nav-link" href="#menu" style="margin-left:8px">Order Online</a>
           </div>
         </section>
@@ -103,7 +105,7 @@
           </div>
           <div style="display:flex;justify-content:space-between;align-items:center">
             <div class="muted">Subtotal</div>
-            <div id="subtotal" style="font-weight:800">$0.00</div>
+            <div id="subtotal" style="font-weight:800">£0.00</div>
           </div>
           <div style="margin-top:12px;display:flex;gap:8px">
             <button class="btn" id="openCheckout">Checkout</button>
@@ -117,14 +119,14 @@
             <label for="customerName">Full name</label>
             <input id="customerName" required placeholder="Your name">
             <label for="customerPhone">Phone</label>
-            <input id="customerPhone" required placeholder="Phone number">
+            <input id="customerPhone" required placeholder="Mobile number">
             <label for="orderMethod">Order type</label>
             <select id="orderMethod">
               <option>Pickup</option>
               <option>Delivery</option>
             </select>
             <label for="customerAddress">Address (if Delivery)</label>
-            <textarea id="customerAddress" placeholder="Street, City, Zip"></textarea>
+            <textarea id="customerAddress" placeholder="Street, City, Postcode"></textarea>
             <label for="customerNotes">Special requests</label>
             <textarea id="customerNotes" placeholder="E.g. extra spicy, no onion"></textarea>
             <div style="display:flex;gap:8px;margin-top:8px">
@@ -140,14 +142,21 @@
         <div class="card" style="margin-top:12px">
           <h4 style="margin:0 0 8px 0">Find us</h4>
           <iframe style="width:100%;height:200px;border:0;border-radius:10px" loading="lazy"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.019!2d-122.4194!3d37.7749">
+            src="https://www.google.com/maps?q=London%20UK&output=embed">
           </iframe>
         </div>
       </aside>
     </main>
 
-    <footer>© <span id="year"></span> Rajugari Ruchulu — Made with ❤️</footer>
+    <footer>
+      <div>© <span id="year"></span> Rajugari Ruchulu — Made with ❤️ in the UK</div>
+      <div class="footer-brand">
+        <img src="assets/img/logo-header-128.png" alt="Header logo">
+        <img src="assets/img/logo-footer-128.png" alt="Footer logo">
+      </div>
+    </footer>
   </div>
+
   <script src="script.js"></script>
 </body>
 </html>

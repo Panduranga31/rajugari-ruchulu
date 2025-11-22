@@ -1,21 +1,24 @@
 
-const FORM_ENDPOINT = ''; // e.g., 'https://formspree.io/f/xxxxxx'
-const RECEIVER_EMAIL = 'orders@rajugariruchulu.example'; // change this
+// UK-ready config
+const FORM_ENDPOINT = ''; // optional Formspree endpoint
+const RECEIVER_EMAIL = 'orders@rajugariruchulu.example'; // change to your real email
+const GBP = '£';
 
 const MENU = [
-  { id:'biryani', name:'Hyderabadi Chicken Biryani', price:13.99, desc:'Layered basmati rice, saffron & raita', img:'assets/img/gallery1.svg' },
-  { id:'butter', name:'Butter Chicken', price:12.50, desc:'Creamy tomato gravy & tender chicken', img:'assets/img/hero-food.svg' },
-  { id:'paneer', name:'Paneer Tikka', price:10.50, desc:'Smoky grilled paneer in spices', img:'assets/img/gallery2.svg' },
-  { id:'dal', name:'Dal Tadka', price:7.50, desc:'Lentils tempered with garlic & cumin', img:'assets/img/gallery3.svg' },
-  { id:'naan', name:'Garlic Naan', price:2.75, desc:'Tandoori flatbread with garlic butter', img:'assets/img/gallery2.svg' },
-  { id:'gulab', name:'Gulab Jamun (2)', price:4.00, desc:'Syrup-soaked sweet dumplings', img:'assets/img/gallery1.svg' },
+  { id:'biryani', name:'Hyderabadi Chicken Biryani', price:12.95, desc:'Layered basmati rice, saffron & raita', img:'assets/img/biryani.jpg' },
+  { id:'butter', name:'Butter Chicken', price:11.50, desc:'Creamy tomato gravy & tender chicken', img:'assets/img/butterchicken.jpg' },
+  { id:'paneer', name:'Paneer Tikka', price:9.95, desc:'Smoky grilled paneer in spices', img:'assets/img/paneer.jpg' },
+  { id:'dal', name:'Dal Tadka', price:6.50, desc:'Lentils tempered with garlic & cumin', img:'assets/img/dal.jpg' },
+  { id:'naan', name:'Garlic Naan', price:2.25, desc:'Tandoori flatbread with garlic butter', img:'assets/img/naan.jpg' },
+  { id:'gulab', name:'Gulab Jamun (2)', price:3.50, desc:'Syrup-soaked sweet dumplings', img:'assets/img/gulab.jpg' },
 ];
-const $ = s => document.querySelector(s);
-const money = n => '$' + n.toFixed(2);
-const grid = '#menuGrid';
 
+const money = n => GBP + n.toFixed(2);
+const $ = s => document.querySelector(s);
+
+// Render menu
 function renderMenu(){
-  const g = document.querySelector(grid);
+  const g = document.querySelector('#menuGrid');
   g.innerHTML = '';
   MENU.forEach(d => {
     const el = document.createElement('div');
@@ -33,9 +36,10 @@ function renderMenu(){
 }
 renderMenu();
 
+// Cart
 const cart = {};
-const list = $('#cartList');
-const subtotalEl = $('#subtotal');
+const list = document.querySelector('#cartList');
+const subtotalEl = document.querySelector('#subtotal');
 
 function renderCart(){
   list.innerHTML = '';
@@ -67,7 +71,7 @@ function renderCart(){
 }
 renderCart();
 
-document.querySelector(grid).addEventListener('click', e=>{
+document.querySelector('#menuGrid').addEventListener('click', e=>{
   const b = e.target.closest('button[data-id]'); if(!b) return;
   const id = b.getAttribute('data-id');
   const item = MENU.find(x=>x.id===id);
@@ -101,6 +105,7 @@ $('#placeOrder').addEventListener('click', async ()=>{
   const address = $('#customerAddress').value.trim();
   const notes = $('#customerNotes').value.trim();
   if(!name || !phone){ alert('Please enter your name and phone.'); return; }
+
   const ids = Object.keys(cart);
   let subtotal = 0;
   const items = ids.map(id=>{
@@ -108,30 +113,29 @@ $('#placeOrder').addEventListener('click', async ()=>{
     return { id, name:r.item.name, qty:r.qty, price:r.item.price, total };
   });
   const orderText = [
-    `Restaurant: Rajugari Ruchulu`,
+    `Restaurant: Rajugari Ruchulu (United Kingdom)`,
     `Name: ${name}`,
     `Phone: ${phone}`,
     `Method: ${method}`,
-    address?`Address: ${address}`:'',
+    address? `Address: ${address}` : '',
     `--- Order ---`,
     ...items.map(i=>`${i.name} x${i.qty} — ${money(i.total)}`),
     `---`,
     `Subtotal: ${money(subtotal)}`,
-    notes?`Notes: ${notes}`:''
+    notes? `Notes: ${notes}` : ''
   ].filter(Boolean).join('\n');
 
   if(FORM_ENDPOINT){
     try{
       const res = await fetch(FORM_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
-        body: JSON.stringify({name, phone, method, address, notes, items, subtotal})});
+        body: JSON.stringify({name, phone, method, address, notes, items, subtotal, currency:'GBP'})});
       if(res.ok){
         alert('Order sent — thank you!');
         Object.keys(cart).forEach(k=> delete cart[k]); renderCart(); document.getElementById('checkoutForm').reset(); $('#checkoutPanel').style.display='none'; return;
       }
     }catch(e){/* fall through */}
   }
-  // fallback to email
-  const subject = encodeURIComponent('New Order — Rajugari Ruchulu');
+  const subject = encodeURIComponent('New Order — Rajugari Ruchulu (UK)');
   const body = encodeURIComponent(orderText);
   window.location.href = `mailto:${RECEIVER_EMAIL}?subject=${subject}&body=${body}`;
 });
